@@ -1,0 +1,5 @@
+.idea
+.vscode
+.DS_store
+node_modules/
+.env
