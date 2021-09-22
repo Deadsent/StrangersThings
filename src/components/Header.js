@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () =>{
   return (
-    <header>
-      <h1>Header Component</h1>
+    <header className="header">
+      <h1 className="title">Strangers Things</h1>
     </header>
   );
   }
