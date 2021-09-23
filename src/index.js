@@ -11,7 +11,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Header, Posts } from "./components";
+import { Header, Posts, NavBar, Login, Register } from "./components";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
