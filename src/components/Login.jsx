@@ -7,37 +7,48 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
 
   return (
-    <div className=" auth-component-main-container">
-      <form>
+    <div className="auth-component-main-container">
+      <form
+        id="login"
+        onSubmit={async (event) => {
+          event.preventDefault();
+
+          try {
+            const {
+              data: { token },
+            } = await loginUser(userName, password);
+            storeToken(token);
+
+            setUserName("");
+            setPassword("");
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
         <fieldset className="auth-component-input">
-          <label htmlFor="userName">User name</label>
+          <label htmlFor="userName">User Name</label>
           <input
             id="userName"
             type="text"
-            placeHolder="enter userName"
+            placeholder="enter username"
             value={userName}
             onChange={(event) => {
               setUserName(event.target.value);
-            }}
-            id="login"
-            onSubmit={async (event) => {
-              event.preventDefault();
-              try {
-                const {
-                  data: { token },
-                } = await loginUser(userName, password);
-                storeToken(token);
-
-                setUserName("");
-                setPassword("");
-              } catch (error) {
-                console.log(error);
-              }
             }}
           ></input>
         </fieldset>
         <fieldset className="auth-component-input">
           <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="enter password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          ></input>
         </fieldset>
       </form>
     </div>
