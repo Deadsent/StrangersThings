@@ -52,7 +52,10 @@ const Login = (props) => {
             }}
           ></input>
         </fieldset>
+        <button>Login</button>
       </form>
     </div>
   );
 };
+
+export default Login;

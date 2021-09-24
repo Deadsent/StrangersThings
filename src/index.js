@@ -11,7 +11,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Header, Posts, NavBar, Login, Register } from "./components";
+import { Header, Posts, Login, Register } from "./components";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -39,7 +39,17 @@ const App = () => {
     <Router>
       <div id="App">
         <Header />
-        <Posts allPosts={allPosts} />
+        <Switch>
+          <Route path="/posts">
+            <Posts allPosts={allPosts} />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
