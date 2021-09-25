@@ -7,7 +7,6 @@ const Posts = (props) => {
     <div className="posts-main-container">
       {allPosts.length
         ? allPosts.map((post) => {
-            console.log(post);
             return (
               <div key={post._id} className="post-card">
                 <h3>{post.title}</h3>

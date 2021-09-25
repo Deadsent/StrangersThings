@@ -13,10 +13,11 @@ const Register = (props) => {
         onSubmit={async (event) => {
           event.preventDefault();
           try {
-            const {data} = await registerUser(userName, password);
-            console.log(data);
-            storeToken(token);
+
+            const {data:{token}} = await registerUser(userName, password);
+            storeToken(token)
             storeUser(userName);
+
             setUserName('')
             setPassword('')
           } catch (error) {
