@@ -19,7 +19,7 @@ import { storeToken, storeUser } from "../auth";
 const Login = (props) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(False);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="auth-component-main-container">
