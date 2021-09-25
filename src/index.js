@@ -49,6 +49,8 @@ const App = () => {
           <Route path="/login">
             <Login />
           </Route>
+          <Posts allPosts={allPosts}/>
+          <NewPostForm setAllPosts={setAllPosts} allPosts={allPosts}></NewPostForm>
         </Switch>
       </div>
     </Router>

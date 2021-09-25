@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../api";
-import { storeToken } from "../auth";
+import { storeToken, storeUser } from "../auth";
 
 const Register = (props) => {
   const [userName, setUserName] = useState("");
@@ -15,7 +15,8 @@ const Register = (props) => {
           try {
             const {data} = await registerUser(userName, password);
             console.log(data);
-
+            storeToken(token);
+            storeUser(userName);
             setUserName('')
             setPassword('')
           } catch (error) {

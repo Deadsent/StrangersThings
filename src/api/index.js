@@ -43,3 +43,26 @@ export async function loginUser(username, password) {
     throw error;
   }
 }
+
+export async function createPost(title,description,user, token) {
+  try {
+    const { data } = await axios.post(`${BASE}/users/posts`,{
+        title: title,
+        description: description,
+        author: user
+      },{
+        headers: {
+
+          // Not sure if it is application and token. (Please delete this comment if correct) -Daniel
+          'Content-Type': application,
+          'Authorization': token
+
+        }
+
+      });
+      
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

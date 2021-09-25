@@ -1,12 +1,24 @@
-//Daniel did this code
-
+// //Daniel did Login.jsx
+// ___            ___
+// /   \          /   \
+// \_   \        /  __/
+//  _\   \      /  /__
+//  \___  \____/   __/
+//      \_       _/
+//        | @ @  \_
+//        |
+//      _/     /\
+//     /o)  (o/\ \_
+//     \_____/ /
+//       \____/
 import React, { useState } from "react";
 import { loginUser } from "../api";
-import { storeToken } from "../auth";
+import { storeToken, storeUser } from "../auth";
 
 const Login = (props) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(False);
 
   return (
     <div className="auth-component-main-container">
@@ -20,9 +32,11 @@ const Login = (props) => {
               data: { token },
             } = await loginUser(userName, password);
             storeToken(token);
-
+            storeUser(userName);
+            setUserName("");
             setUserName("");
             setPassword("");
+          
           } catch (error) {
             console.log(error);
           }
@@ -59,3 +73,5 @@ const Login = (props) => {
 };
 
 export default Login;
+
+
