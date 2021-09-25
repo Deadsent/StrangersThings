@@ -16,11 +16,11 @@ export async function registerUser(username, password) {
   try {
     const { data } = await axios.post(
       `${BASE}/users/register`,
-      {},
       {
+      user: {
         username: username,
-        password: password,
-      }
+        password: password
+      }}
     );
     return data;
   } catch (error) {

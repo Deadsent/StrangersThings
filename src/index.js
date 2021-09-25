@@ -3,6 +3,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import { getToken } from "./auth";
+
 
 import {
   BrowserRouter as Router,
@@ -17,14 +19,18 @@ const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const fetchAllPosts = async () => {
     try {
+      const myToken = getToken()
       const {
         data: {
           data: { posts },
         },
       } = await axios.get(
-        "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT/posts/"
+        "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT/posts/", {
+          headers: {
+            "auth-token": myToken,
+          }
+        }
       );
-      console.log(posts, "axios");
 
       setAllPosts(posts);
     } catch (error) {

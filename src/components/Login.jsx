@@ -1,5 +1,3 @@
-//Daniel did this code
-
 import React, { useState } from "react";
 import { loginUser } from "../api";
 import { storeToken } from "../auth";
