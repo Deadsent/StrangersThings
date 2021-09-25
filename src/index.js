@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 import { getToken } from "./auth";
 
 
+
 import {
   BrowserRouter as Router,
   Route,
@@ -14,7 +15,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Header, Posts, Login, Register } from "./components";
+import { Header, Posts, Login, Register, NewPostForm } from "./components";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -49,6 +50,7 @@ const App = () => {
         <Switch>
           <Route path="/posts">
             <Posts allPosts={allPosts} />
+            <NewPostForm/>
           </Route>
           <Route path="/register">
             <Register />
