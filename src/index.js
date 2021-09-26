@@ -1,4 +1,3 @@
-
 // src/index.js
 
 import axios from "axios";
@@ -19,6 +18,8 @@ import { Header, Posts, Login, Register, NewPostForm } from "./components";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   const fetchAllPosts = async () => {
     try {
       const myToken = getToken()
@@ -50,13 +51,13 @@ const App = () => {
         <Switch>
           <Route path="/posts">
             <Posts allPosts={allPosts} />
-            <NewPostForm/>
+            <NewPostForm isLoggedIn={isLoggedIn}/>
           </Route>
           <Route path="/register">
             <Register />
           </Route>
           <Route path="/login">
-            <Login />
+            <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
           </Route>
         </Switch>
       </div>

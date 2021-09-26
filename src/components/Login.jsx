@@ -1,4 +1,3 @@
-
 // //Daniel did Login.jsx
 // ___            ___
 // /   \          /   \
@@ -15,6 +14,8 @@
 import React, { useState } from "react";
 import { loginUser } from "../api";
 import { storeToken, storeUser } from "../auth";
+import { getToken } from "../auth";
+
 
 const Login = (props) => {
   const [userName, setUserName] = useState("");
@@ -35,9 +36,7 @@ const Login = (props) => {
             storeToken(token);
             storeUser(userName);
             setUserName("");
-            setUserName("");
             setPassword("");
-          
           } catch (error) {
             console.log(error);
           }
@@ -67,13 +66,15 @@ const Login = (props) => {
             }}
           ></input>
         </fieldset>
-        <button>Login</button>
+        <button onClick={() =>{
+          myToken = getToken()
+          myToken ?
+          setIsLoggedIn(true) :
+          null
+        }}>Login</button>
       </form>
     </div>
   );
 };
 
 export default Login;
-
-
-

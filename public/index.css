@@ -1,58 +1,57 @@
-.header{
-    top: 0px;
-    width: 100%;
-    max-height: 4%;
-    background-color: royalblue;
-    padding: 5px;
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
+#App {
+  background-color: lightgray;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, 1fr);
 }
 
-.title{
-    text-align: center;
-    font-size: 225%;
-    grid-row: 0/1;
+.header {
+  background-color: royalblue;
+  padding: 5px;
+  grid-row: 0/1;
+  grid-column: 1/5;
 }
 
-.posts-main-container{
+.title {
+  text-align: center;
+  font-size: 225%;
+}
+
+.posts-main-container {
+  border: 2px solid black;
+  background-color: lightgray;
+  padding: 10px;
+  margin: 10px;
+  display: grid;
+  grid-column: 1/3;
+  grid-row: 2/8;
+}
+
+.new-post-component-main-container{
     border: 2px solid black;
-    background-color: lightgray;
-    padding: 10px;
-    margin: 10px;
-    display: grid;
+    grid-row: 2/4;
+    grid-column: 3/5;
 }
 
-.post-card{
-    border: 2px solid black;
-    background-color: moccasin;
-    padding: 10px;
-    margin: 10px;
+.post-card {
+  border: 2px solid black;
+  background-color: moccasin;
+  padding: 10px;
+  margin: 10px;
 }
 
-.nav-links{
-    font-size: 150%;
-    text-align: center;
-    grid-row: 2;
+.nav-links {
+  font-size: 150%;
+  text-align: center;
+  grid-row: 2;
 }
 
-a.navbar-link{
-    padding: 10px;
-    text-decoration: none;
-    color: black;
+a.navbar-link {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
 }
 
-a.navbar-link:link{
-
-}
-
-a.navbar-link:visited{
-    
-}
-
-a.navbar-link:hover{
-    font-size: 200%;
-}
-
-a.navbar-link:active{
-    
+a.navbar-link:hover {
+  font-size: 200%;
 }
