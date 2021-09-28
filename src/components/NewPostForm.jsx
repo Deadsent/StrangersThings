@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createPost } from "../api";
 import { getToken } from "../auth";
 
-  const NewPostForm = (props) => {
+const NewPostForm = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -17,10 +17,13 @@ import { getToken } from "../auth";
             const token = getToken();
             const user = getUser();
 
-            const createdPost = await createPost(title, description, user, token);
-            setAllPosts(createdPost, ...allPosts)
-           
-
+            const createdPost = await createPost(
+              title,
+              description,
+              user,
+              token
+            );
+            setAllPosts(createdPost, ...allPosts);
           } catch (error) {
             console.error(error);
           }
@@ -36,10 +39,9 @@ import { getToken } from "../auth";
             value={title}
             onChange={(event) => {
 
-                
               setTitle(event.target.value);
-
             }}
+            required
           ></input>
         </fieldset>
         <fieldset className="auth-component-input">
@@ -47,16 +49,15 @@ import { getToken } from "../auth";
           <input
             id="description"
             type="text"
-            placeholder="enter title"
+            placeholder="enter description"
             value={description}
             onChange={(event) => {
               setDescription(event.target.value);
             }}
+            required
           ></input>
         </fieldset>
-        <button type='submit'>Submit</button>
-
-
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

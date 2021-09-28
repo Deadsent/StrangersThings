@@ -3,7 +3,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { getToken } from "./auth";
+import { getToken, getUser } from "./auth";
 
 import {
   BrowserRouter as Router,
@@ -23,9 +23,17 @@ import {
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   const fetchAllPosts = async () => {
     try {
-      const myToken = getToken();
+      
+      const myToken = getToken()
+
+      if(myToken){
+        setIsLoggedIn(true)
+      }
+
       const {
         data: {
           data: { posts },
@@ -34,8 +42,10 @@ const App = () => {
         "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT/posts/",
         {
           headers: {
-            "auth-token": myToken,
-          },
+
+            "Authorization": `BEARER ${myToken}`,
+          }
+
         }
       );
 
@@ -44,6 +54,7 @@ const App = () => {
       console.error(error.message);
     }
   };
+
   useEffect(() => {
     fetchAllPosts();
   }, []);
@@ -51,23 +62,26 @@ const App = () => {
   return (
     <Router>
       <div id="App">
-        <Header />
+        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <Switch>
           <Route path="/posts">
             <Posts allPosts={allPosts} />
-{/* Daniel added setAllPosts */}
-            <NewPostForm setAllPosts={setAllPosts} allPosts={allPosts} />
-{/* End of Daniels input */}
+
           </Route>
           <Route path="/register">
 {/* Daniel added below code, which errors with the below code*/}
             <Route path="/posts/:postId" />
             <SinglePostPage allPosts={allPosts} />
 {/* End of Daniels input */}
+
             <Register />
+            <NewPostForm isLoggedIn={isLoggedIn} setAllPosts={setAllPosts}/>
+          </Route>
+          <Route path="/register">
+            <Register setIsLoggedIn={setIsLoggedIn}/>
           </Route>
           <Route path="/login">
-            <Login />
+            <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
           </Route>
         </Switch>
       </div>

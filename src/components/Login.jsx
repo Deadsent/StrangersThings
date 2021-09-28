@@ -13,12 +13,11 @@
 
 import React, { useState } from "react";
 import { loginUser } from "../api";
-import { storeToken, storeUser } from "../auth";
+import { getToken, storeToken, storeUser } from "../auth";
 
-const Login = (props) => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="auth-component-main-container">
@@ -32,11 +31,10 @@ const Login = (props) => {
               data: { token },
             } = await loginUser(userName, password);
             storeToken(token);
+            setIsLoggedIn(true)
             storeUser(userName);
             setUserName("");
-            setUserName("");
             setPassword("");
-          
           } catch (error) {
             console.log(error);
           }
@@ -66,13 +64,12 @@ const Login = (props) => {
             }}
           ></input>
         </fieldset>
-        <button>Login</button>
+        <button>
+          Login
+        </button>
       </form>
     </div>
   );
 };
 
 export default Login;
-
-
-
