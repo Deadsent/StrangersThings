@@ -3,7 +3,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { getToken } from "./auth";
+import { getToken, getUser } from "./auth";
 
 
 
@@ -23,6 +23,10 @@ const App = () => {
   const fetchAllPosts = async () => {
     try {
       const myToken = getToken()
+
+      if(myToken){
+        setIsLoggedIn(true)
+      }
       const {
         data: {
           data: { posts },
@@ -30,7 +34,7 @@ const App = () => {
       } = await axios.get(
         "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT/posts/", {
           headers: {
-            "auth-token": myToken,
+            "Authorization": `BEARER ${myToken}`,
           }
         }
       );
@@ -40,6 +44,7 @@ const App = () => {
       console.error(error.message);
     }
   };
+
   useEffect(() => {
     fetchAllPosts();
   }, []);
@@ -47,14 +52,14 @@ const App = () => {
   return (
     <Router>
       <div id="App">
-        <Header />
+        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <Switch>
           <Route path="/posts">
             <Posts allPosts={allPosts} />
-            <NewPostForm isLoggedIn={isLoggedIn}/>
+            <NewPostForm isLoggedIn={isLoggedIn} setAllPosts={setAllPosts}/>
           </Route>
           <Route path="/register">
-            <Register />
+            <Register setIsLoggedIn={setIsLoggedIn}/>
           </Route>
           <Route path="/login">
             <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>

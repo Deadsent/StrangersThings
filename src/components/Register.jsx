@@ -18,7 +18,7 @@ const Register = (props) => {
             } = await registerUser(userName, password);
             storeToken(token);
             storeUser(userName);
-
+            
             setUserName("");
             setPassword("");
           } catch (error) {
