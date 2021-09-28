@@ -1,19 +1,28 @@
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, Switch, Link } from "react-router-dom";
+import { getUser } from "../auth";
 
-const Header = () =>{
+
+const Header = ({isLoggedIn, setIsLoggedIn}) =>{
+  const myUser = getUser()
+  console.log(isLoggedIn)
   return (
     <header className="header">
-      <h1 className="title">Strangers Things</h1>
+      {myUser ? <h1 className="title">Welcome to Stranger's Things, {myUser}!</h1>
+      : <h1 className="title">Welcome To Stranger's Things, Guest!</h1>}
       <div className="nav-links">
       <Link className="navbar-link" to="/posts">
         Posts
       </Link>
-      <Link className="navbar-link" to="/login">
+      {isLoggedIn ? <div className="auth-link">
+        <button className="navbar-link" onClick={()=>
+        {setIsLoggedIn(false)
+        localStorage.clear()}}>Log Out</button>
+      </div> 
+      : <Link className="navbar-link" to="/login">
         Login
-      </Link>
+      </Link> }
       <Link className="navbar-link" to="/register">
           Register
       </Link>

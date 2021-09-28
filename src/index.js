@@ -3,9 +3,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { getToken } from "./auth";
-
-
+import { getToken, getUser } from "./auth";
 
 import {
   BrowserRouter as Router,
@@ -14,7 +12,14 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Header, Posts, Login, Register, NewPostForm } from "./components";
+import {
+  Header,
+  Posts,
+  Login,
+  Register,
+  NewPostForm,
+  SinglePost,
+} from "./components";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -22,16 +27,26 @@ const App = () => {
 
   const fetchAllPosts = async () => {
     try {
+      
       const myToken = getToken()
+
+      if(myToken){
+        setIsLoggedIn(true)
+      }
+
       const {
         data: {
           data: { posts },
         },
       } = await axios.get(
-        "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT/posts/", {
+        "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT/posts/",
+        {
           headers: {
-            "Authorization": `Bearer ${myToken}`,
+
+            "Authorization": `BEARER ${myToken}`,
+
           }
+
         }
       );
 
@@ -40,6 +55,7 @@ const App = () => {
       console.error(error.message);
     }
   };
+
   useEffect(() => {
     fetchAllPosts();
   }, []);
@@ -47,14 +63,23 @@ const App = () => {
   return (
     <Router>
       <div id="App">
-        <Header />
+        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <Switch>
           <Route path="/posts">
             <Posts allPosts={allPosts} />
             <NewPostForm isLoggedIn={isLoggedIn} setAllPosts={setAllPosts} allPosts={allPosts}/>
           </Route>
           <Route path="/register">
+{/* Daniel added below code, which errors with the below code*/}
+            <Route path="/posts/:postId" />
+            <SinglePostPage allPosts={allPosts} />
+{/* End of Daniels input */}
+
             <Register />
+            <NewPostForm isLoggedIn={isLoggedIn} setAllPosts={setAllPosts}/>
+          </Route>
+          <Route path="/register">
+            <Register setIsLoggedIn={setIsLoggedIn}/>
           </Route>
           <Route path="/login">
             <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
