@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 const Posts = (props) => {
   const { allPosts } = props;
@@ -7,7 +7,7 @@ const Posts = (props) => {
     <div className="posts-main-container">
       {allPosts.length
         ? allPosts.map((post) => {
-            return (
+          return (
               <div key={post._id} className="post-card">
                 <h3>{post.title}</h3>
                 <p>{post.description}</p>

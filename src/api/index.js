@@ -39,20 +39,23 @@ export async function loginUser(username, password) {
   }
 }
 
-export async function createPost(title, description, user, token) {
+export async function createPost(title, description, token) {
+  console.log(token)
   try {
     const { data } = await axios.post(
-      `${BASE}/users/posts`,
+      `${BASE}/posts`,
       {
-        title: title,
-        description: description,
-        author: user,
+        post: {
+          title: title,
+          description: description,
+          price: '2'
+        }
       },
       {
         headers: {
           // Not sure if it is application and token. (Please delete this comment if correct) -Daniel
-          "Content-Type": application,
-          Authorization: token,
+          "Content-Type": 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
       }
     );

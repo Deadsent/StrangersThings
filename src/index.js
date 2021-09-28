@@ -30,7 +30,7 @@ const App = () => {
       } = await axios.get(
         "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT/posts/", {
           headers: {
-            "auth-token": myToken,
+            "Authorization": `Bearer ${myToken}`,
           }
         }
       );
@@ -51,7 +51,7 @@ const App = () => {
         <Switch>
           <Route path="/posts">
             <Posts allPosts={allPosts} />
-            <NewPostForm isLoggedIn={isLoggedIn}/>
+            <NewPostForm isLoggedIn={isLoggedIn} setAllPosts={setAllPosts} allPosts={allPosts}/>
           </Route>
           <Route path="/register">
             <Register />

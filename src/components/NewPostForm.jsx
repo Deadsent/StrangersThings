@@ -5,7 +5,7 @@ import { getToken } from "../auth";
 const NewPostForm = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
+  const {setAllPosts, allPosts} = props
   return (
     <div className="new-post-component-main-container">
       <form
@@ -15,15 +15,15 @@ const NewPostForm = (props) => {
 
           try {
             const token = getToken();
-            const user = getUser();
-
             const createdPost = await createPost(
               title,
               description,
-              user,
               token
             );
-            setAllPosts(createdPost, ...allPosts);
+            
+            setAllPosts([createdPost.data.post, ...allPosts]);
+            console.log(createdPost)
+            
           } catch (error) {
             console.error(error);
           }
