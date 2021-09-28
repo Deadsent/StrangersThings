@@ -36,13 +36,12 @@ import { getToken } from "../auth";
             value={title}
             onChange={(event) => {
 
-                //I am not sure if it is setTitle. (If that is correct please delete this comment) -Daniel
+                
               setTitle(event.target.value);
 
             }}
           ></input>
         </fieldset>
-        <button type='submit'>Submit</button>
         <fieldset className="auth-component-input">
           <label htmlFor="description">Description</label>
           <input
