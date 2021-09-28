@@ -1,4 +1,3 @@
-// //Daniel did Login.jsx
 // ___            ___
 // /   \          /   \
 // \_   \        /  __/
@@ -11,6 +10,7 @@
 //     /o)  (o/\ \_
 //     \_____/ /
 //       \____/
+
 import React, { useState } from "react";
 import { loginUser } from "../api";
 import { getToken, storeToken, storeUser } from "../auth";
