@@ -44,6 +44,7 @@ const App = () => {
           headers: {
 
             "Authorization": `BEARER ${myToken}`,
+
           }
 
         }
@@ -66,7 +67,7 @@ const App = () => {
         <Switch>
           <Route path="/posts">
             <Posts allPosts={allPosts} />
-
+            <NewPostForm isLoggedIn={isLoggedIn} setAllPosts={setAllPosts} allPosts={allPosts}/>
           </Route>
           <Route path="/register">
 {/* Daniel added below code, which errors with the below code*/}

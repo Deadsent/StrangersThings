@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 // Daniel added import of Link and SinglePostPage
 import { SinglePost } from ".";
@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
     <div className="posts-main-container">
       {allPosts.length
         ? allPosts.map((post) => {
+
             return (
 // Daniel added Link and SinglePost tag
               <Link to={'/posts/${post._id}'}
