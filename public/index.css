@@ -9,6 +9,7 @@
   background-color: royalblue;
   grid-row: 1;
   grid-column: 1/5;
+  grid-template-rows: 30%;
 }
 
 .title {

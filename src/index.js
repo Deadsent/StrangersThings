@@ -14,6 +14,7 @@ import {
 
 import {
   Header,
+  NavBar,
   Posts,
   Login,
   Register,
@@ -60,6 +61,7 @@ const App = () => {
     <Router>
       <div id="App">
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Switch>
           <Route exact path="/posts">
             <Posts allPosts={allPosts} />
