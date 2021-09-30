@@ -4,6 +4,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { SinglePost } from ".";
 
+
 const SinglePostPage = ({ allPosts }) => {
   const { postId } = useParams();
 
