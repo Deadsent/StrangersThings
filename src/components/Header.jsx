@@ -11,6 +11,7 @@ const Header = ({isLoggedIn, setIsLoggedIn}) =>{
     <header className="header">
       {myUser ? <h1 className="title">Welcome to Stranger's Things, {myUser}!</h1>
       : <h1 className="title">Welcome To Stranger's Things, Guest!</h1>}
+      
       <div className="nav-links">
       <Link className="navbar-link" to="/posts">
         Posts

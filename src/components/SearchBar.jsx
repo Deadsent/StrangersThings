@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const SearchBar = ({ searchTerm, setSearchTerm }) => {
+const SearchBar = ({ searchTerm, setSearchTerm, allPosts, setAllPosts }) => {
+  useEffect(() => {
+    const filtered = allPosts.filter((post) => {
+      if(post.title.includes(searchTerm)){
+      return true} else {
+        return false
+      }
+
+    });
+    setAllPosts(filtered);
+  }, [searchTerm]);
+
   return (
     <div className="new-post-component-main-container">
       <form>
@@ -9,7 +20,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
           <input
             id="filterInput"
             type="text"
-            placeHolder="filter"
+            placeholder="filter"
             value={searchTerm}
             onChange={(event) => {
               setSearchTerm(event.target.value);
