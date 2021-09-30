@@ -19,12 +19,14 @@ import {
   Login,
   Register,
   NewPostForm,
-  SinglePostPage,
+  SinglePostPage, 
+  SearchBar
 } from "./components";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('')
 
   const fetchAllPosts = async () => {
     try {
@@ -64,6 +66,7 @@ const App = () => {
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Switch>
           <Route exact path="/posts">
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} allPosts={allPosts} setAllPosts={setAllPosts}/>
             <Posts allPosts={allPosts} />
             <NewPostForm
               isLoggedIn={isLoggedIn}
