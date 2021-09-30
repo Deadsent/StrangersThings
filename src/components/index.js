@@ -5,4 +5,5 @@
   export {default as NewPostForm} from './NewPostForm'
   export {default as SinglePost} from './SinglePost'
   export {default as SinglePostPage} from './SinglePostPage'
+  export {default as NavBar} from './NavBar'
   export {default as SearchBar} from './SearchBar'
