@@ -15,11 +15,10 @@ const Header = ({isLoggedIn, setIsLoggedIn}) =>{
       <Link className="navbar-link" to="/posts">
         Posts
       </Link>
-      {isLoggedIn ? <div className="auth-link">
-        <button className="navbar-link" onClick={()=>
+      {isLoggedIn ? 
+        <Link className="navbar-link" onClick={()=>
         {setIsLoggedIn(false)
-        localStorage.clear()}}>Log Out</button>
-      </div> 
+        localStorage.clear()}} to="/">Log Out</Link>
       : <Link className="navbar-link" to="/login">
         Login
       </Link> }

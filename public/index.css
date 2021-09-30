@@ -7,8 +7,7 @@
 
 .header {
   background-color: royalblue;
-  padding: 5px;
-  grid-row: 0/1;
+  grid-row: 1;
   grid-column: 1/5;
 }
 
@@ -21,7 +20,6 @@
   border: 2px solid black;
   background-color: lightgray;
   padding: 10px;
-  margin: 10px;
   display: grid;
   grid-column: 1/3;
   grid-row: 2/8;
@@ -54,4 +52,10 @@ a.navbar-link {
 
 a.navbar-link:hover {
   font-size: 200%;
+}
+
+a.link-tag {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
 }
