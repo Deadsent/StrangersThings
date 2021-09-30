@@ -18,7 +18,7 @@ import {
   Login,
   Register,
   NewPostForm,
-  SinglePost,
+  SinglePostPage,
 } from "./components";
 
 const App = () => {
