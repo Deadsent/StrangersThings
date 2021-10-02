@@ -20,14 +20,14 @@ import {
   Messages,
   Register,
   NewPostForm,
-  SinglePostPage, 
-  SearchBar
+  SinglePostPage,
+  SearchBar,
 } from "./components";
 
 const App = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchAllPosts = async () => {
     try {
@@ -67,7 +67,12 @@ const App = () => {
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Switch>
           <Route exact path="/posts">
-          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} allPosts={allPosts} setAllPosts={setAllPosts}/>
+            <SearchBar
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              allPosts={allPosts}
+              setAllPosts={setAllPosts}
+            />
             <Posts allPosts={allPosts} />
             <NewPostForm
               isLoggedIn={isLoggedIn}
@@ -78,10 +83,10 @@ const App = () => {
           <Route exact path="/posts/:postId">
             <SinglePostPage allPosts={allPosts} />
           </Route>
-          <Route path="/register">
+          <Route exact path="/register">
             <Register setIsLoggedIn={setIsLoggedIn} />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             
           </Route>
