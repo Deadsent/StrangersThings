@@ -70,3 +70,34 @@ export async function createPost(title, description, token) {
 export async function deletePost(id){
   const myToken = getToken()
 }
+
+
+
+
+
+
+
+
+export async function createMessage(id, content) {
+  const token = getToken()
+  try {
+    const { data } = await axios.post(
+      `${BASE}/posts/${id}/messages`,{
+        message:{
+          content
+        }
+      }, 
+{
+  headers: {
+    "Content-Type": 'application/json',
+    'Authorization': `Bearer ${token}`,
+  },
+}
+    );
+    return data;
+  } catch (error) {
+    console.error(error);
+  }finally {
+    location.reload()
+  }
+}

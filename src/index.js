@@ -17,6 +17,7 @@ import {
   NavBar,
   Posts,
   Login,
+  Messages,
   Register,
   NewPostForm,
   SinglePostPage, 
@@ -82,6 +83,7 @@ const App = () => {
           </Route>
           <Route path="/login">
             <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            
           </Route>
         </Switch>
       </div>

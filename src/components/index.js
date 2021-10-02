@@ -7,3 +7,4 @@
   export {default as SinglePostPage} from './SinglePostPage'
   export {default as NavBar} from './NavBar'
   export {default as SearchBar} from './SearchBar'
+  export { default as Messages} from './Messages'
