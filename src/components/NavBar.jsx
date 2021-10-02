@@ -1,5 +1,6 @@
 import React from "react";
 import { getUser } from "../auth";
+import { Link } from "react-router-dom";
 
 const NavBar = ({isLoggedIn, setIsLoggedIn}) =>{
     const myUser = getUser()

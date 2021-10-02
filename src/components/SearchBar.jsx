@@ -13,7 +13,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, allPosts, setAllPosts }) => {
   }, [searchTerm]);
 
   return (
-    <div className="new-post-component-main-container">
+    <div className="searchBar">
       <form>
         <fieldset>
           <label id="filter">Filter</label>
