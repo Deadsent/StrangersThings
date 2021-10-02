@@ -4,8 +4,15 @@ import { getToken } from "../auth";
 const BASE = "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT";
 
 export async function getUsers() {
+  const myToken = getToken()
+  
   try {
-    const { data } = await axios.get(`${BASE}/users`);
+    const { data } = await axios.get(`${BASE}/users/me`, {
+      headers: {
+        "Content-Type": 'application/json',
+          'Authorization': `Bearer ${myToken}`
+      }
+    });
     return data;
   } catch (error) {
     throw error;
@@ -41,7 +48,7 @@ export async function loginUser(username, password) {
 }
 
 export async function createPost(title, description, token) {
-  console.log(token)
+  
   try {
     const { data } = await axios.post(
       `${BASE}/posts`,
@@ -69,4 +76,19 @@ export async function createPost(title, description, token) {
 
 export async function deletePost(id){
   const myToken = getToken()
+
+  try{
+    const {data} = await axios.delete(`${BASE}/posts/${id}`, {
+      headers: {
+        "Content-Type": 'application/json',
+          'Authorization': `Bearer ${myToken}`
+      },
+    }
+    )
+    return data;
+} catch(error){
+  throw error
+} finally{
+  location.reload()
+}
 }

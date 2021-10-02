@@ -4,7 +4,6 @@ import { getUser } from "../auth";
 
 const Header = ({isLoggedIn, setIsLoggedIn}) =>{
   const myUser = getUser()
-  console.log(isLoggedIn)
   return (
     <header className="header">
       {myUser ? <h1 className="title">Welcome to Stranger's Things, {myUser}!</h1>
