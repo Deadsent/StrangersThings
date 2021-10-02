@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getToken } from "../auth";
 
 const BASE = "https://strangers-things.herokuapp.com/api/2106-UNF-RM-WEB-PT";
 
@@ -64,4 +65,8 @@ export async function createPost(title, description, token) {
   } catch (error) {
     throw error;
   }
+}
+
+export async function deletePost(id){
+  const myToken = getToken()
 }
