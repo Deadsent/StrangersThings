@@ -73,9 +73,32 @@ export async function createPost(title, description, token) {
     throw error;
   }
 }
+export async function createMessage(id, content) {
+  const token = getToken()
+  try {
+    const { data } = await axios.post(
+      `${BASE}/posts/${id}/messages`,{
+        message:{
+          content
+        }
+      }, 
+{
+  headers: {
+    "Content-Type": 'application/json',
+    'Authorization': `Bearer ${token}`,
+  },
+}
+    );
+    return data;
+  } catch (error) {
+    console.error(error);
+  }finally {
+    location.reload()
+  }
 
 export async function deletePost(id){
   const myToken = getToken()
+
 
   try{
     const {data} = await axios.delete(`${BASE}/posts/${id}`, {
@@ -91,4 +114,5 @@ export async function deletePost(id){
 } finally{
   location.reload()
 }
+
 }
