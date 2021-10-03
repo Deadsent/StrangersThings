@@ -21,6 +21,7 @@
 }
 
 .nav-links {
+  background-color: royalblue;
   padding: 10px;
   grid-row:2;
   grid-column: 1/5;

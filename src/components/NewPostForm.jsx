@@ -5,6 +5,7 @@ import { getToken } from "../auth";
 const NewPostForm = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState('')
   const {setAllPosts, allPosts} = props
   return (
     <div className="new-post-component-main-container">
@@ -53,6 +54,19 @@ const NewPostForm = (props) => {
             value={description}
             onChange={(event) => {
               setDescription(event.target.value);
+            }}
+            required
+          ></input>
+        </fieldset>
+        <fieldset className="auth-component-input">
+          <label htmlFor="price">Price</label>
+          <input
+            id="price"
+            type="text"
+            placeholder="enter price"
+            value={price}
+            onChange={(event) => {
+              setPrice(event.target.value);
             }}
             required
           ></input>

@@ -11,13 +11,9 @@ const Posts = ({ allPosts }) => {
       {allPosts.length
         ? allPosts.map((post) => {
             return post.active ? (
-              <Link
-                to={`/posts/${post._id}`}
-                key={post._id}
-                className="link-tag"
-              >
+            
                 <SinglePost post={post} />
-              </Link>
+              
             ) : null;
           })
         : null}

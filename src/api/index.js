@@ -47,7 +47,7 @@ export async function loginUser(username, password) {
   }
 }
 
-export async function createPost(title, description, token) {
+export async function createPost(title, description, price, token) {
   
   try {
     const { data } = await axios.post(
@@ -56,7 +56,7 @@ export async function createPost(title, description, token) {
         post: {
           title: title,
           description: description,
-          price: '2'
+          price: price
         }
       },
       {
@@ -95,13 +95,13 @@ export async function createMessage(id, content) {
   }finally {
     location.reload()
   }
+}
 
 export async function deletePost(id){
   const myToken = getToken()
-
-
   try{
     const {data} = await axios.delete(`${BASE}/posts/${id}`, {
+      method: "DELETE",
       headers: {
         "Content-Type": 'application/json',
           'Authorization': `Bearer ${myToken}`
@@ -113,6 +113,4 @@ export async function deletePost(id){
   throw error
 } finally{
   location.reload()
-}
-
-}
+}}

@@ -80,9 +80,9 @@ const App = () => {
               allPosts={allPosts}
             />
           </Route>
-          <Route exact path="/posts/:postId">
+          {/* <Route exact path="/posts/:postId">
             <SinglePostPage allPosts={allPosts} />
-          </Route>
+          </Route> */}
           <Route exact path="/register">
             <Register setIsLoggedIn={setIsLoggedIn} />
           </Route>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { createMessage } from './api'
+import { createMessage } from '../api'
 
 
-const Messages = ({postId}) => {
+const Messages = ({post, postId}) => {
       const [content, setContent ] = useState()
     return (
         <div key={post._id} className="user-message-component-main-container">
@@ -13,6 +13,8 @@ const Messages = ({postId}) => {
                postId,
                content
              )
+
+             return data
          } catch (error) {
              console.error(error);
              
